@@ -12,6 +12,8 @@ public class Voucher implements MetodeBayar {
 
     @Override
     public int totalBayar(int totalBelanja) {
-        return totalBelanja - nilai;
+        // Versi awal (melanggar kontrak):
+        // Keranjang kedua: Voucher Rp100.000 : Rp-36.000
+        return Math.max(0, totalBelanja - nilai);
     }
 }
