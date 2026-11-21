@@ -1,0 +1,25 @@
+import java.util.Locale;
+
+public class BukuDigital extends Buku implements BisaDiunduh {
+    private final double ukuranMB;
+    private final int diskonPersen;
+
+    public BukuDigital(String judul, String penulis, int harga, double ukuranMB, int diskonPersen) {
+        super(judul, penulis, harga);
+        this.ukuranMB = ukuranMB;
+        this.diskonPersen = diskonPersen;
+    }
+
+    @Override
+    public int getDiskonPersen() { return diskonPersen; }
+
+    @Override
+    public int hitungHargaAkhir() {
+        return getHarga() * (100 - diskonPersen) / 100;
+    }
+
+    @Override
+    public String getKeterangan() {
+        return String.format(Locale.US, "%.1f MB, diskon %d%%", ukuranMB, diskonPersen);
+    }
+}
